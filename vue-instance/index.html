@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>vue instance</title>
+</head>
+
+<body>
+  <div id="vue-app">
+    <h2>{{greet('Afternoon')}}</h2>
+    <p>name:{{firstname}}<p>
+    <p>job:{{job}}</p>
+
+    <h2>data binding using v-bind</h2>
+    <label for="fname">first name:</label>
+
+    <!--v-bind example for attributes -->
+    <input type="text" id="fname" v-bind:value = "firstname"/>
+
+    <label for="lname">last name:</label>
+
+    <input type="text" id="lname" v-model="lastname" v-on:keyup.enter ="logName"/>
+    <span>{{lastname}}</span>
+
+    <a v-bind:href = "website">google</a>
+
+    <!--v-html example-->
+    <p v-html="websiteTag"></p>
+
+      <!--dynamic css class example
+
+      <h2>dyanamic css class example</h2>
+        <h3>example 1</h3>
+        <div v-on:click="available = !available" v-bind:class="{available: available}">
+          <span>Ryu</span>
+        </div>                     -->
+
+        <h3>dynamic class bind w computed class example </h3>
+        <div v-bind:class="computedClass">
+          <span>Ryu</span>
+          <button v-on:click="nearby = !nearby">Toggle Nearby class</button>
+          <button v-on:click="available = !available">Toggle Available class</button>
+        </div>
+
+
+    <!--v-on for events....calls method add, subtract-->
+    <button v-on:click="add">add year</button>
+    <p>my age is {{age}}</p>
+    <button v-on:click="subtract">subtract year</button>
+
+    <div id="canvas" v-on:mousemove="updateXY">{{x}} , {{y}}</div>
+
+    <p>example of computed property {{x}} + {{y}} = {{z}}</p>
+
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
